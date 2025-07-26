@@ -8,16 +8,16 @@ adding two new lines after certain punctuation marks.
 
 def text_indentation(text):
     """Print text with 2 new lines after '.', '?', and ':' characters.
-    
+
     Args:
         text (str): The text to format and print
-        
+
     Raises:
         TypeError: If text is not a string
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    
+
     i = 0
     while i < len(text):
         if text[i] in ".?:":
