@@ -1,0 +1,66 @@
+The ``3-say_my_name`` module
+======================
+
+Using ``say_my_name``
+-------------------
+
+This is an example text file in reStructuredText format. First import
+``say_my_name`` from the ``3-say_my_name`` module:
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Now use it:
+
+Basic name printing:
+    >>> say_my_name("John", "Smith")
+    My name is John Smith
+
+    >>> say_my_name("Walter", "White")
+    My name is Walter White
+
+Only first name:
+    >>> say_my_name("Bob")
+    My name is Bob 
+
+Empty strings:
+    >>> say_my_name("", "")
+    My name is  
+
+    >>> say_my_name("Alice", "")
+    My name is Alice 
+
+Type error cases:
+    >>> say_my_name(12, "White")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name("John", 123)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+    >>> say_my_name(None, "Smith")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name("John", None)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+    >>> say_my_name(["John"], "Smith")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+    >>> say_my_name("John", ["Smith"])
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+Special characters:
+    >>> say_my_name("José", "García")
+    My name is José García
+
+    >>> say_my_name("O'Connor", "Smith-Jones")
+    My name is O'Connor Smith-Jones
+
+Single character names:
+    >>> say_my_name("A", "B")
+    My name is A B

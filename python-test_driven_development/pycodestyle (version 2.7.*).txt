@@ -1,0 +1,188 @@
+PYCODESTYLE VERSION 2.7.* RULES REFERENCE
+==========================================
+
+OVERVIEW
+--------
+- pycodestyle (formerly pep8) checks Python code against PEP 8 style conventions
+- Version 2.7.* follows PEP 8 style guide principles
+- Tool provides error codes (E### for errors, W### for warnings)
+
+INDENTATION RULES
+----------------
+- Use 4 spaces per indentation level (never tabs)
+- No mixing of tabs and spaces
+- Align continuation lines vertically or use hanging indents
+- Consistent indentation within modules/functions
+
+LINE LENGTH
+-----------
+- Maximum line length: 79 characters
+- Maximum docstring/comment line length: 72 characters
+- Use line breaks to maintain readability
+- Break lines before binary operators (preferred)
+
+WHITESPACE RULES
+---------------
+- No extra whitespace inside parentheses, brackets, or braces
+  Good: spam(ham[1], {eggs: 2})
+  Bad:  spam( ham[ 1 ], { eggs: 2 } )
+
+- No whitespace before function/indexing parentheses
+  Good: func(args), dict['key']
+  Bad:  func (args), dict ['key']
+
+- One space around binary operators
+  Good: x + y, x == y
+  Bad:  x+y, x==y
+
+- No trailing whitespace
+- No multiple consecutive blank lines
+
+BLANK LINES
+-----------
+- 2 blank lines between top-level function and class definitions
+- 1 blank line between method definitions inside a class
+- Extra blank lines may be used to separate groups of related functions
+- Blank lines may be omitted between simple one-liners
+
+NAMING CONVENTIONS
+-----------------
+- Modules: lowercase_with_underscores
+- Classes: CapitalizedWords (CapWords/PascalCase)
+- Functions/Variables: lowercase_with_underscores
+- Constants: ALL_UPPERCASE_WITH_UNDERSCORES
+- Private attributes: _single_leading_underscore
+- Avoid single-letter names: 'l' (lowercase L), 'O' (uppercase o), 'I' (uppercase i)
+
+IMPORT ORGANIZATION
+------------------
+- Imports at top of file (after module docstring)
+- Group imports in order:
+  1. Standard library imports
+  2. Related third-party imports
+  3. Local application/library imports
+- One import per line
+- Absolute imports preferred over relative
+- Avoid wildcard imports (from module import *)
+
+CODING STYLE
+-----------
+- Use 'is' and 'is not' for None comparisons
+- Use isinstance() instead of type() for type checking
+- Empty sequences are falsy (use "if seq:" not "if len(seq):")
+- String methods preferred over string module
+- Use .startswith() and .endswith() instead of string slicing
+- Object type comparisons should use isinstance()
+
+COMMENTS AND DOCSTRINGS
+----------------------
+- Comments should be complete sentences
+- Inline comments sparingly, separated by at least 2 spaces
+- Docstrings for all public modules, functions, classes, methods
+- Use """triple double quotes""" for docstrings
+- First line of docstring should be a brief summary
+
+COMMON ERROR CODES (version 2.7.*)
+----------------------------------
+E1xx: Indentation
+  E101: indentation contains mixed spaces and tabs
+  E111: indentation is not a multiple of four
+  E112: expected an indented block
+  E113: unexpected indentation
+
+E2xx: Whitespace
+  E201: whitespace after '('
+  E202: whitespace before ')'
+  E203: whitespace before ':'
+  E221: multiple spaces before operator
+  E222: multiple spaces after operator
+  E223: tab before operator
+  E224: tab after operator
+  E225: missing whitespace around operator
+  E231: missing whitespace after ','
+
+E3xx: Blank line
+  E301: expected 1 blank line, found 0
+  E302: expected 2 blank lines, found 0
+  E303: too many blank lines
+
+E4xx: Import
+  E401: multiple imports on one line
+  E402: module level import not at top of file
+
+E5xx: Line length
+  E501: line too long (> 79 characters)
+
+E7xx: Statement
+  E701: multiple statements on one line (colon)
+  E702: multiple statements on one line (semicolon)
+  E703: statement ends with a semicolon
+  E711: comparison to None should be 'if cond is None:'
+  E712: comparison to True should be 'if cond is True:' or 'if cond:'
+
+E9xx: Runtime
+  E901: SyntaxError or IndentationError
+  E902: IOError
+
+W1xx: Indentation warning
+  W191: indentation contains tabs
+
+W2xx: Whitespace warning
+  W291: trailing whitespace
+  W292: no newline at end of file (CRITICAL ERROR - ALL FILES MUST END WITH NEWLINE)
+  W293: blank line contains whitespace (FIXED IN 12-roman_to_int.py)
+
+W3xx: Blank line warning
+  W391: blank line at end of file
+
+W5xx: Line break warning
+  W503: line break before binary operator
+  W504: line break after binary operator
+
+IGNORED BY DEFAULT (version 2.7.*)
+----------------------------------
+E121, E123, E126, E133, E226, E241, E242, E704, W503, W504, W505
+
+CONFIGURATION
+------------
+- User config: ~/.config/pycodestyle
+- Project config: setup.cfg, tox.ini, or .pycodestyle
+- Can ignore specific error codes
+- Can set custom line length limits
+- Can exclude files/directories
+
+USAGE EXAMPLES
+-------------
+# Check single file
+pycodestyle file.py
+
+# Check directory
+pycodestyle directory/
+
+# Show error details
+pycodestyle --show-source --show-pep8 file.py
+
+# Ignore specific errors
+pycodestyle --ignore=E501,W291 file.py
+
+# Statistics
+pycodestyle --statistics file.py
+
+NOTES
+-----
+- pycodestyle is a style checker, not an automatic formatter
+- Consistency within a project is more important than strict adherence
+- Some rules may conflict - use judgment for readability
+- Tool helps maintain code quality and readability standards
+
+CRITICAL FIXES APPLIED
+----------------------
+- W292 Error: All Python files MUST end with a newline character
+- This prevents "no newline at end of file" errors in pycodestyle
+- Files affected: 0-print_list_integer.py, 1-element_at.py, 2-replace_in_list.py, 
+  3-print_reversed_list_integer.py, 4-new_in_list.py, 5-no_c.py
+
+- W293 Error: blank line contains whitespace
+- This occurs when blank lines contain spaces or tabs instead of being completely empty
+- Files affected: 12-roman_to_int.py (lines 5, 10, 13, 17, 19, 24, 26)
+- Fix: Remove all whitespace from blank lines

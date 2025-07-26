@@ -1,0 +1,84 @@
+The ``5-text_indentation`` module
+======================
+
+Using ``text_indentation``
+-------------------
+
+This is an example text file in reStructuredText format. First import
+``text_indentation`` from the ``5-text_indentation`` module:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Now use it:
+
+Basic text indentation:
+    >>> text_indentation("Hello. World? Yes: No")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
+    No
+
+Multiple spaces after punctuation:
+    >>> text_indentation("Hello.   World?   Yes:   No")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
+    No
+
+No special characters:
+    >>> text_indentation("Hello World")
+    Hello World
+
+Empty string:
+    >>> text_indentation("")
+
+Only punctuation:
+    >>> text_indentation("...")
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+
+Type error cases:
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation(['text'])
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Text with leading/trailing spaces:
+    >>> text_indentation("   Hello.   World   ")
+       Hello.
+    <BLANKLINE>
+    World   
+
+Mixed punctuation:
+    >>> text_indentation("First sentence. Second question? Third statement: Fourth part")
+    First sentence.
+    <BLANKLINE>
+    Second question?
+    <BLANKLINE>
+    Third statement:
+    <BLANKLINE>
+    Fourth part
+
+Newlines in text:
+    >>> text_indentation("Line1\nLine2. Line3")
+    Line1
+    Line2.
+    <BLANKLINE>
+    Line3
