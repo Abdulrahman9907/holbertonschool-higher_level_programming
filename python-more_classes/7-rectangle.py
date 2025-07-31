@@ -1,7 +1,14 @@
 #!/usr/bin/python3
+"""Defines a Rectangle class."""
 
 
 class Rectangle:
+    """Defines a rectangle.
+    
+    Attributes:
+        number_of_instances (int): The number of Rectangle instances.
+        print_symbol (any): The symbol used for string representation.
+    """
     number_of_instances = 0
     print_symbol = "#"
 
@@ -35,14 +42,17 @@ class Rectangle:
         self.__height = value
 
     def area(self):
+        """Return the area of the rectangle."""
         return self.__width * self.__height
 
     def perimeter(self):
+        """Return the perimeter of the rectangle."""
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
+        """Return the printable representation of the rectangle."""
         if self.__width == 0 or self.__height == 0:
             return ""
         lines = []
@@ -51,8 +61,10 @@ class Rectangle:
         return "\n".join(lines)
 
     def __repr__(self):
+        """Return the string representation of the rectangle."""
         return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
+        """Print a message when an instance of Rectangle is deleted."""
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
