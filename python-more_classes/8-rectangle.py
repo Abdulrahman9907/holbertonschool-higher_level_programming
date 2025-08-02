@@ -4,7 +4,7 @@
 
 class Rectangle:
     """Defines a rectangle.
-    
+
     Attributes:
         number_of_instances (int): The number of Rectangle instances.
         print_symbol (any): The symbol used for string representation.
@@ -72,11 +72,10 @@ class Rectangle:
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
         """Return the biggest rectangle based on the area.
-        
+
         Args:
             rect_1 (Rectangle): The first rectangle.
             rect_2 (Rectangle): The second rectangle.
-            
         Returns:
             Rectangle: The rectangle with the bigger area.
         """
