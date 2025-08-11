@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module that contains a function to read and print files."""
 
 
 def read_file(filename=""):
