@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 age = 20
 
 if age >= 18:

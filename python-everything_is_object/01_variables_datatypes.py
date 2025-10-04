@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 age = 25
 price = 19.99
 name = "Alice"

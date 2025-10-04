@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 try:
     result = 10 / 2
     print(result)
@@ -47,8 +48,17 @@ except ZeroDivisionError:
 finally:
     print("This always executes")
 
+# Example with raising custom exceptions
+# (commented to avoid blocking automation)
+# try:
+#     age = int(input("Enter age: "))
+#     if age < 0:
+#         raise ValueError("Age cannot be negative")
+# except ValueError as e:
+#     print(f"Error: {e}")
+
 try:
-    age = int(input("Enter age: "))
+    age = -5
     if age < 0:
         raise ValueError("Age cannot be negative")
 except ValueError as e:

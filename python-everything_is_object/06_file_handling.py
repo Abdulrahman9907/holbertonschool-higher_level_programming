@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 file = open("sample_data.txt", "r")
 content = file.read()
 print(content)
